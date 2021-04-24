@@ -1,17 +1,37 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDom from 'react-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const Books=[{
+    id:1,
+    src:"https://images-eu.ssl-images-amazon.com/images/I/81gTwYAhU7L._AC_UL200_SR200,200_.jpg",
+    tittle:"The Power of your Subconscious Mind",
+    author:"Joseph Murphy"
+},
+{   id:2,
+    src:"https://images-eu.ssl-images-amazon.com/images/I/81vPz-eS6QL._AC_UL200_SR200,200_.jpg",
+    tittle:"Deep Work: Rules for Focused Success in a Distracted World",
+    author:"Cal Newport"
+}]
+
+const Book=({src,author,tittle})=>{
+
+    return(
+    <>
+       <img src={src} alt=""/>
+       <h2>{tittle}</h2>
+       <h4>{author}</h4>
+    </>
+    )
+}
+
+const BookList=()=>{
+    return(
+        Books.map(book=>{
+            return(
+            <Book key={book.id}{...book}/>
+            )
+        })
+    )
+}
+ReactDom.render(<BookList/>,document.getElementById("root"));
